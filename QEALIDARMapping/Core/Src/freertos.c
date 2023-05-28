@@ -26,6 +26,14 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "usart.h"
+#include "math.h"
+#include "stdio.h"
+#include "string.h"
+#include "queue.h"
+#include "semphr.h"
+#include "wheel_pwm.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,8 +59,13 @@
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 128 * 4,
+  .stack_size = 256 * 4,
   .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for debugUartMutex */
+osMutexId_t debugUartMutexHandle;
+const osMutexAttr_t debugUartMutex_attributes = {
+  .name = "debugUartMutex"
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,6 +86,9 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
+  /* Create the mutex(es) */
+  /* creation of debugUartMutex */
+  debugUartMutexHandle = osMutexNew(&debugUartMutex_attributes);
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -117,7 +133,21 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+
+      //上传左轮速度，pwm值
+      char message[64] = {0};
+      snprintf(message, 64, "lSpeed:%.2lf lPwm:%.2lf\r\n", leftPWM.speed, leftPWM.pwm);
+      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+      //上传右轮速度，pwm值
+      snprintf(message, 64, "rSpeed:%.2lf rPwm:%.2lf\r\n", rightPWM.speed, rightPWM.pwm);
+      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+
+
+      osDelay(100);
   }
   /* USER CODE END StartDefaultTask */
 }
