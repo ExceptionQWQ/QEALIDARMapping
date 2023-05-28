@@ -58,5 +58,6 @@ extern osThreadId_t lidarTaskHandle;
 
 void LIDAR_RxCpltCallback();
 int DecodeLIDARPackage();
+void ClearLidarData();
 
 #endif

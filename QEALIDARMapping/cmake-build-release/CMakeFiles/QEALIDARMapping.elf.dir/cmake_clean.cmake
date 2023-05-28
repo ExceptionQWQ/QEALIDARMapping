@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj"
   "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.obj"
   "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj"
+  "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.obj"
   "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj"
   "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj"
   "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_it.c.obj"

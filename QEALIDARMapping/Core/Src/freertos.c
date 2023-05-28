@@ -35,6 +35,7 @@
 #include "wheel_pwm.h"
 #include "imu.h"
 #include "lidar.h"
+#include "map.h"
 
 /* USER CODE END Includes */
 
@@ -78,6 +79,13 @@ const osThreadAttr_t lidarDecoder_attributes = {
   .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for mappingEngine */
+osThreadId_t mappingEngineHandle;
+const osThreadAttr_t mappingEngine_attributes = {
+  .name = "mappingEngine",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 /* Definitions for debugUartMutex */
 osMutexId_t debugUartMutexHandle;
 const osMutexAttr_t debugUartMutex_attributes = {
@@ -92,6 +100,7 @@ const osMutexAttr_t debugUartMutex_attributes = {
 void StartDefaultTask(void *argument);
 void IMUDecoder(void *argument);
 void LidarDecoder(void *argument);
+void MappingEngine(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -134,6 +143,9 @@ void MX_FREERTOS_Init(void) {
   /* creation of lidarDecoder */
   lidarDecoderHandle = osThreadNew(LidarDecoder, NULL, &lidarDecoder_attributes);
 
+  /* creation of mappingEngine */
+  mappingEngineHandle = osThreadNew(MappingEngine, NULL, &mappingEngine_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -159,7 +171,7 @@ void StartDefaultTask(void *argument)
   {
 
       //上传左轮速度，pwm值
-      char message[64] = {0};
+      char message[128] = {0};
       snprintf(message, 64, "lSpeed:%.2lf lPwm:%.2lf\r\n", leftPWM.speed, leftPWM.pwm);
       xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
       HAL_UART_Transmit(&huart1, message, strlen(message), 100);
@@ -177,20 +189,21 @@ void StartDefaultTask(void *argument)
       xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 
 
-      //上传lidar数据
-      for (int i = 0; i < 360; ++i) {
-          snprintf(message, 64, "%d %d %d\r\n", i, lidarPointData[i].distance, lidarPointData[i].intensity);
-          xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
-          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
-          xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
-      }
+//      //上传lidar数据
+//      for (int i = 0; i < 360; ++i) {
+//          snprintf(message, 64, "%d %d %d\r\n", i, lidarPointData[i].distance, lidarPointData[i].intensity);
+//          xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+//          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+//          xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+//      }
 
       snprintf(message, 64, "time_stamp:%d\r\n", lidar_time_stamp);
       xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
       HAL_UART_Transmit(&huart1, message, strlen(message), 100);
       xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 
-      osDelay(100);
+
+      osDelay(1000);
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -244,6 +257,45 @@ void LidarDecoder(void *argument)
       osDelay(1);
   }
   /* USER CODE END LidarDecoder */
+}
+
+/* USER CODE BEGIN Header_MappingEngine */
+/**
+* @brief Function implementing the mappingEngine thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_MappingEngine */
+void MappingEngine(void *argument)
+{
+  /* USER CODE BEGIN MappingEngine */
+  Init_Robot_Map();
+  Init_Robot_Pos();
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1000);
+    Init_Robot_Map();
+    Update_Map();
+
+
+    char message[128] = {0};
+      //上传地图
+      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+      int messageIndex = 0;
+      for (int y = MAP_Y_SIZE - 1; y >= 0; --y) {
+          memset(message, 0, 64);
+          messageIndex = 0;
+          for (int x = 0; x < MAP_X_SIZE; ++x) {
+              message[messageIndex++] = slamMap[x][y];
+          }
+          message[messageIndex++] = '\r';
+          message[messageIndex++] = '\n';
+          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+      }
+      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+  }
+  /* USER CODE END MappingEngine */
 }
 
 /* Private application code --------------------------------------------------*/

@@ -87,3 +87,10 @@ int DecodeLIDARPackage()
     }
     return 0;
 }
+
+void ClearLidarData()
+{
+    for (int i = 0; i < 361; ++i) {
+        lidarPointData[i].intensity = 0;
+    }
+}
