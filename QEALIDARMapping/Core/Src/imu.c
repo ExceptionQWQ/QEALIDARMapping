@@ -2,13 +2,11 @@
 
 //使用双缓冲
 uint8_t imuRecvBuff1[64] = {0};
-int imuRecvOffset1 = 0;
 uint8_t imuRecvBuff2[64] = {0};
-int imuRecvOffset2 = 0;
-int imuRecvStatus = 0;
-uint8_t* imuPackage = 0; //等待处理的数据包
+volatile int imuRecvStatus = 0;
+volatile uint8_t* imuPackage = 0; //等待处理的数据包
 uint8_t imuBuff[1024] = {0};
-uint8_t imuBuffOffset = 0;
+volatile uint32_t imuBuffOffset = 0;
 
 volatile struct RobotIMU robotIMU;
 osThreadId_t imuTaskHandle;
@@ -40,37 +38,24 @@ uint16_t CRC16_Table(uint8_t* p, uint8_t counter) {
     return (crc16);
 }
 
-
 void IMU_RxCpltCallback()
 {
     if (imuRecvStatus == 0) {
-        imuRecvOffset1 += 1;
-        if (imuRecvOffset1 == 64) {
-            imuRecvStatus = 1;
-            imuRecvOffset1 = 0;
-            imuPackage = imuRecvBuff1;
-            HAL_UART_Receive_IT(&huart2, imuRecvBuff2 + imuRecvOffset2, 1);
-            //通知解析imu任务
-            BaseType_t flag = 0;
-            xTaskNotifyFromISR(imuTaskHandle, 0x12345678, eSetValueWithOverwrite, &flag);
-            portYIELD_FROM_ISR(flag);
-        } else {
-            HAL_UART_Receive_IT(&huart2, imuRecvBuff1 + imuRecvOffset1, 1);
-        }
+        imuRecvStatus = 1;
+        imuPackage = imuRecvBuff1;
+        HAL_UART_Receive_IT(&huart2, imuRecvBuff2, 64);
+        //通知解析imu任务
+        BaseType_t flag = 0;
+        xTaskNotifyFromISR(imuTaskHandle, 0x12345678, eSetValueWithOverwrite, &flag);
+        portYIELD_FROM_ISR(flag);
     } else {
-        imuRecvOffset2 += 1;
-        if (imuRecvOffset2 == 64) {
-            imuRecvStatus = 0;
-            imuRecvOffset2 = 0;
-            imuPackage = imuRecvBuff2;
-            HAL_UART_Receive_IT(&huart2, imuRecvBuff1 + imuRecvOffset1, 1);
-            //通知解析imu任务
-            BaseType_t flag = 0;
-            xTaskNotifyFromISR(imuTaskHandle, 0x12345678, eSetValueWithOverwrite, &flag);
-            portYIELD_FROM_ISR(flag);
-        } else {
-            HAL_UART_Receive_IT(&huart2, imuRecvBuff2 + imuRecvOffset2, 1);
-        }
+        imuRecvStatus = 0;
+        imuPackage = imuRecvBuff2;
+        HAL_UART_Receive_IT(&huart2, imuRecvBuff1, 64);
+        //通知解析imu任务
+        BaseType_t flag = 0;
+        xTaskNotifyFromISR(imuTaskHandle, 0x12345678, eSetValueWithOverwrite, &flag);
+        portYIELD_FROM_ISR(flag);
     }
 }
 
@@ -89,22 +74,28 @@ void HandleIMUPackage(int cmd, uint8_t* data, int len)
 void DecodeIMUPackage()
 {
     if (imuPackage) {
+        if (imuBuffOffset + 64 >= 1024) imuBuffOffset = 0;
         memcpy(imuBuff + imuBuffOffset, imuPackage, 64);
         imuBuffOffset += 64;
-        if (imuBuffOffset >= 1024) imuBuffOffset = 0;
         imuPackage = 0;
     }
     //定位帧头
     int packageStart = 0;
-    for (; packageStart < imuBuffOffset - 4; ++packageStart) {
+    int flag = 0;
+    for (; imuBuffOffset > 5 && packageStart < imuBuffOffset - 4; ++packageStart) {
         uint8_t crc8 = CRC8_Table(imuBuff + packageStart, 4);
+
         if (imuBuff[packageStart] == 0xFC && crc8 == imuBuff[packageStart + 4]) {
+            flag = 1;
             break;
         }
     }
     //将帧头移动到起始位置
-    memcpy(imuBuff, imuBuff + packageStart, imuBuffOffset - packageStart);
-    imuBuffOffset -= packageStart;
+    if (flag) {
+        memcpy(imuBuff, imuBuff + packageStart, imuBuffOffset - packageStart);
+        imuBuffOffset -= packageStart;
+    }
+
 
     //判断帧头
     uint8_t crc8 = CRC8_Table(imuBuff, 4);

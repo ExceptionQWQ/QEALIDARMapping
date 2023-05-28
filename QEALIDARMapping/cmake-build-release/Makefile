@@ -223,6 +223,33 @@ Core/Src/imu.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.s
 .PHONY : Core/Src/imu.c.s
 
+Core/Src/lidar.obj: Core/Src/lidar.c.obj
+
+.PHONY : Core/Src/lidar.obj
+
+# target to build an object file
+Core/Src/lidar.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.obj
+.PHONY : Core/Src/lidar.c.obj
+
+Core/Src/lidar.i: Core/Src/lidar.c.i
+
+.PHONY : Core/Src/lidar.i
+
+# target to preprocess a source file
+Core/Src/lidar.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.i
+.PHONY : Core/Src/lidar.c.i
+
+Core/Src/lidar.s: Core/Src/lidar.c.s
+
+.PHONY : Core/Src/lidar.s
+
+# target to generate assembly for a file
+Core/Src/lidar.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.s
+.PHONY : Core/Src/lidar.c.s
+
 Core/Src/main.obj: Core/Src/main.c.obj
 
 .PHONY : Core/Src/main.obj
@@ -1168,6 +1195,9 @@ help:
 	@echo "... Core/Src/imu.obj"
 	@echo "... Core/Src/imu.i"
 	@echo "... Core/Src/imu.s"
+	@echo "... Core/Src/lidar.obj"
+	@echo "... Core/Src/lidar.i"
+	@echo "... Core/Src/lidar.s"
 	@echo "... Core/Src/main.obj"
 	@echo "... Core/Src/main.i"
 	@echo "... Core/Src/main.s"

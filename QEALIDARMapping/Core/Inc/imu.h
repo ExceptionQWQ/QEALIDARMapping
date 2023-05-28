@@ -10,13 +10,11 @@
 #include "cmsis_os.h"
 
 extern uint8_t imuRecvBuff1[64];
-extern int imuRecvOffset1;
 extern uint8_t imuRecvBuff2[64];
-extern int imuRecvOffset2;
-extern int imuRecvStatus;
-extern uint8_t* imuPackage; //等待处理的数据包
+extern volatile int imuRecvStatus;
+extern volatile uint8_t* imuPackage; //等待处理的数据包
 extern uint8_t imuBuff[1024];
-extern uint8_t imuBuffOffset;
+extern volatile uint32_t imuBuffOffset;
 
 struct MSG_IMU
 {

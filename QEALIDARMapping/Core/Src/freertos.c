@@ -34,6 +34,7 @@
 #include "semphr.h"
 #include "wheel_pwm.h"
 #include "imu.h"
+#include "lidar.h"
 
 /* USER CODE END Includes */
 
@@ -67,8 +68,15 @@ const osThreadAttr_t defaultTask_attributes = {
 osThreadId_t imuDecoderHandle;
 const osThreadAttr_t imuDecoder_attributes = {
   .name = "imuDecoder",
-  .stack_size = 256 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for lidarDecoder */
+osThreadId_t lidarDecoderHandle;
+const osThreadAttr_t lidarDecoder_attributes = {
+  .name = "lidarDecoder",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for debugUartMutex */
 osMutexId_t debugUartMutexHandle;
@@ -83,6 +91,7 @@ const osMutexAttr_t debugUartMutex_attributes = {
 
 void StartDefaultTask(void *argument);
 void IMUDecoder(void *argument);
+void LidarDecoder(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -121,6 +130,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of imuDecoder */
   imuDecoderHandle = osThreadNew(IMUDecoder, NULL, &imuDecoder_attributes);
+
+  /* creation of lidarDecoder */
+  lidarDecoderHandle = osThreadNew(LidarDecoder, NULL, &lidarDecoder_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -165,6 +177,19 @@ void StartDefaultTask(void *argument)
       xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 
 
+      //上传lidar数据
+      for (int i = 0; i < 360; ++i) {
+          snprintf(message, 64, "%d %d %d\r\n", i, lidarPointData[i].distance, lidarPointData[i].intensity);
+          xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+          xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+      }
+
+      snprintf(message, 64, "time_stamp:%d\r\n", lidar_time_stamp);
+      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+
       osDelay(100);
   }
   /* USER CODE END StartDefaultTask */
@@ -183,7 +208,7 @@ void IMUDecoder(void *argument)
   imuTaskHandle = xTaskGetCurrentTaskHandle(); //将当前任务句柄送给imu
   HAL_UART_Receive_IT(&huart2, imuRecvBuff1, 1); //开启imu串口通信
   /* Infinite loop */
-  for(;;)
+  for(uint32_t cnt = 0; ; ++cnt)
   {
       uint32_t value = 0;
       if (pdTRUE == xTaskNotifyWait(0, 0xffffffff, &value, portMAX_DELAY) && value == 0x12345678) {
@@ -192,6 +217,33 @@ void IMUDecoder(void *argument)
       osDelay(1);
   }
   /* USER CODE END IMUDecoder */
+}
+
+/* USER CODE BEGIN Header_LidarDecoder */
+/**
+* @brief Function implementing the lidarDecoder thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_LidarDecoder */
+void LidarDecoder(void *argument)
+{
+  /* USER CODE BEGIN LidarDecoder */
+  debugUartMutex = debugUartMutexHandle;
+  lidarDecoderHandle = xTaskGetCurrentTaskHandle(); //将当前任务句柄送给lidar
+  HAL_UART_Receive_IT(&huart3, lidarRecvBuff1, 1); //开启lidar串口通信
+
+  /* Infinite loop */
+  for(uint32_t cnt = 0; ; ++cnt)
+  {
+      //不知道为什么串口3的抢占优先级必须小于5
+      while (1) {
+          int ret = DecodeLIDARPackage();
+          if (ret == 0) break;
+      }
+      osDelay(1);
+  }
+  /* USER CODE END LidarDecoder */
 }
 
 /* Private application code --------------------------------------------------*/
