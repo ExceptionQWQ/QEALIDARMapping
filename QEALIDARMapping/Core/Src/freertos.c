@@ -33,6 +33,7 @@
 #include "queue.h"
 #include "semphr.h"
 #include "wheel_pwm.h"
+#include "imu.h"
 
 /* USER CODE END Includes */
 
@@ -62,6 +63,13 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 256 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for imuDecoder */
+osThreadId_t imuDecoderHandle;
+const osThreadAttr_t imuDecoder_attributes = {
+  .name = "imuDecoder",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
 /* Definitions for debugUartMutex */
 osMutexId_t debugUartMutexHandle;
 const osMutexAttr_t debugUartMutex_attributes = {
@@ -74,6 +82,7 @@ const osMutexAttr_t debugUartMutex_attributes = {
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
+void IMUDecoder(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -109,6 +118,9 @@ void MX_FREERTOS_Init(void) {
   /* Create the thread(s) */
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
+  /* creation of imuDecoder */
+  imuDecoderHandle = osThreadNew(IMUDecoder, NULL, &imuDecoder_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -146,10 +158,40 @@ void StartDefaultTask(void *argument)
       HAL_UART_Transmit(&huart1, message, strlen(message), 100);
       xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 
+      //上传imu数据
+      snprintf(message, 64, "roll:%.2lf pitch:%.2lf heading:%.2lf\r\n", robotIMU.roll, robotIMU.pitch, robotIMU.heading);
+      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+
 
       osDelay(100);
   }
   /* USER CODE END StartDefaultTask */
+}
+
+/* USER CODE BEGIN Header_IMUDecoder */
+/**
+* @brief Function implementing the imuDecoder thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_IMUDecoder */
+void IMUDecoder(void *argument)
+{
+  /* USER CODE BEGIN IMUDecoder */
+  imuTaskHandle = xTaskGetCurrentTaskHandle(); //将当前任务句柄送给imu
+  HAL_UART_Receive_IT(&huart2, imuRecvBuff1, 1); //开启imu串口通信
+  /* Infinite loop */
+  for(;;)
+  {
+      uint32_t value = 0;
+      if (pdTRUE == xTaskNotifyWait(0, 0xffffffff, &value, portMAX_DELAY) && value == 0x12345678) {
+          DecodeIMUPackage(); //解析imu数据包
+      }
+      osDelay(1);
+  }
+  /* USER CODE END IMUDecoder */
 }
 
 /* Private application code --------------------------------------------------*/

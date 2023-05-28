@@ -108,6 +108,9 @@
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Inc/gpio.h">
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
+		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Inc/imu.h">
+			<Option target="QEALIDARMapping.elf"/>
+		</Unit>
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Inc/main.h">
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
@@ -130,6 +133,9 @@
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/gpio.c">
+			<Option target="QEALIDARMapping.elf"/>
+		</Unit>
+		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/imu.c">
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/main.c">

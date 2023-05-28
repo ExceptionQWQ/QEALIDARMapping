@@ -30,6 +30,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/freertos.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/gpio.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.obj"
+  "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/imu.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/main.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/stm32f1xx_hal_msp.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/stm32f1xx_hal_timebase_tim.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj"

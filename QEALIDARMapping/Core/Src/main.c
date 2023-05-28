@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 
 #include "wheel_pwm.h"
+#include "imu.h"
 
 /* USER CODE END Includes */
 
@@ -59,6 +60,15 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart)
+{
+    if (huart->Instance == USART2) {
+        IMU_RxCpltCallback();
+    }
+}
+
 
 /* USER CODE END 0 */
 
@@ -110,6 +120,7 @@ int main(void)
 //    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
 //    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
 //    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
+
 
 
   /* USER CODE END 2 */
