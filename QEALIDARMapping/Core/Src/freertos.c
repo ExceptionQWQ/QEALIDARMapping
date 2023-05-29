@@ -37,6 +37,7 @@
 #include "lidar.h"
 #include "map.h"
 #include "motion.h"
+#include "detect_circle.h"
 
 /* USER CODE END Includes */
 
@@ -84,7 +85,14 @@ const osThreadAttr_t lidarDecoder_attributes = {
 osThreadId_t mappingEngineHandle;
 const osThreadAttr_t mappingEngine_attributes = {
   .name = "mappingEngine",
-  .stack_size = 700 * 4,
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for circleDetect */
+osThreadId_t circleDetectHandle;
+const osThreadAttr_t circleDetect_attributes = {
+  .name = "circleDetect",
+  .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for debugUartMutex */
@@ -102,6 +110,7 @@ void StartDefaultTask(void *argument);
 void IMUDecoder(void *argument);
 void LidarDecoder(void *argument);
 void MappingEngine(void *argument);
+void CircleDetect(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -147,6 +156,9 @@ void MX_FREERTOS_Init(void) {
   /* creation of mappingEngine */
   mappingEngineHandle = osThreadNew(MappingEngine, NULL, &mappingEngine_attributes);
 
+  /* creation of circleDetect */
+  circleDetectHandle = osThreadNew(CircleDetect, NULL, &circleDetect_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -173,21 +185,21 @@ void StartDefaultTask(void *argument)
 
       //上传左轮速度，pwm值
       char message[128] = {0};
-      snprintf(message, 64, "lSpeed:%.2lf lPwm:%.2lf\r\n", leftPWM.speed, leftPWM.pwm);
-      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
-      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
-      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
-      //上传右轮速度，pwm值
-      snprintf(message, 64, "rSpeed:%.2lf rPwm:%.2lf\r\n", rightPWM.speed, rightPWM.pwm);
-      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
-      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
-      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
-
-      //上传imu数据
-      snprintf(message, 64, "roll:%.2lf pitch:%.2lf heading:%.2lf\r\n", robotIMU.roll, robotIMU.pitch, robotIMU.heading);
-      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
-      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
-      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+//      snprintf(message, 64, "lSpeed:%.2lf lPwm:%.2lf\r\n", leftPWM.speed, leftPWM.pwm);
+//      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+//      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+//      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+//      //上传右轮速度，pwm值
+//      snprintf(message, 64, "rSpeed:%.2lf rPwm:%.2lf\r\n", rightPWM.speed, rightPWM.pwm);
+//      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+//      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+//      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+//
+//      //上传imu数据
+//      snprintf(message, 64, "roll:%.2lf pitch:%.2lf heading:%.2lf\r\n", robotIMU.roll, robotIMU.pitch, robotIMU.heading);
+//      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+//      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+//      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 
 
       //上传lidar数据
@@ -273,36 +285,77 @@ void MappingEngine(void *argument)
   /* USER CODE BEGIN MappingEngine */
   Init_Robot_Map();
   Init_Robot_Pos();
+  Clear_Hough_Result();
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
       struct NextLoc nextLoc = Find_Next_Loc();
       if (nextLoc.ret) {
-//          char message[64] = {0};
-//          snprintf(message, 64, "radian:%.2lf\r\n", nextLoc.radian);
-//          xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
-//          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
-//          xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
           SpinTo(nextLoc.radian);
           ClearSpeed();
           MoveForward(60);
           CommitSpeed();
-//          osDelay(pdMS_TO_TICKS(1000));
       } else {
           ClearSpeed();
           MoveForward(60);
           CommitSpeed();
-//          osDelay(pdMS_TO_TICKS(1000));
       }
-
-
   }
   /* USER CODE END MappingEngine */
 }
 
+/* USER CODE BEGIN Header_CircleDetect */
+/**
+* @brief Function implementing the circleDetect thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_CircleDetect */
+void CircleDetect(void *argument)
+{
+  /* USER CODE BEGIN CircleDetect */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+      struct Detect_Circle_Result detectCircleResult = Hough_Circles(10, 125);
+      char message[64] = {0};
+      snprintf(message, 64, "r:%d x:%d y:%d thresh:%d\r\n", detectCircleResult.radius, detectCircleResult.x, detectCircleResult.y, detectCircleResult.thresh);
+      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+      if (detectCircleResult.radius) {
+//          HAL_GPIO_WritePin(BEEP_GPIO_Port, BEEP_Pin, GPIO_PIN_SET);
+          double k = atan(detectCircleResult.y / detectCircleResult.x);
+          if (detectCircleResult.x > 0 && detectCircleResult.y > 0) {
+              k += 0;
+          } else if (detectCircleResult.x < 0 && detectCircleResult.y > 0) {
+              k += PI;
+          } else if (detectCircleResult.x < 0 && detectCircleResult.y < 0) {
+              k += PI;
+          } else {
+              k += 2 * PI;
+          }
+          vTaskSuspend(mappingEngineHandle);
+
+          k += lidarPointData[0].radian;
+          if (k > 2 * PI) k -= 2 * PI;
+//          SpinTo(k);
+
+          vTaskResume(mappingEngineHandle);
+      }
+      else {
+          HAL_GPIO_WritePin(BEEP_GPIO_Port, BEEP_Pin, GPIO_PIN_RESET);
+      }
+
+  }
+  /* USER CODE END CircleDetect */
+}
+
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
+
 
 /* USER CODE END Application */
 

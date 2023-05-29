@@ -45,8 +45,8 @@ struct LidarPointData
 {
     uint16_t distance;
     uint8_t intensity;
-    double x;
-    double y;
+    int32_t x;
+    int32_t y;
     double radian;
 };
 
