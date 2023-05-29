@@ -71,12 +71,19 @@ int DecodeLIDARPackage()
             double step = (liDarFrameTypeDef->end_angle - liDarFrameTypeDef->start_angle) / 11.0;
             for (int i = 0; i < 12; ++i) {
                 int angle = (int)((liDarFrameTypeDef->start_angle + step * i) / 100.0);
+                angle = 360 - angle; //转换成逆时针方向
                 uint16_t distance = liDarFrameTypeDef->point[i].distance;
                 uint8_t intensity = liDarFrameTypeDef->point[i].intensity;
+                angle += 180; //逆时针旋转180度
+                if (angle > 360) angle -= 360;
                 if (angle < 0) angle = 0;
                 if (angle > 360) angle = 360;
                 lidarPointData[angle].distance = distance;
                 lidarPointData[angle].intensity = distance;
+                lidarPointData[angle].x = distance * cos(PI / 180 * angle);
+                lidarPointData[angle].y = distance * sin(PI / 180 * angle);
+                lidarPointData[angle].radian = robotIMU.heading + PI / 180 * angle;
+                if (lidarPointData[angle].radian > 2 * PI) lidarPointData[angle].radian -= 2 * PI;
             }
         }
 

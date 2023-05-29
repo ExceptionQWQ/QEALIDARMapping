@@ -36,6 +36,7 @@
 #include "imu.h"
 #include "lidar.h"
 #include "map.h"
+#include "motion.h"
 
 /* USER CODE END Includes */
 
@@ -83,7 +84,7 @@ const osThreadAttr_t lidarDecoder_attributes = {
 osThreadId_t mappingEngineHandle;
 const osThreadAttr_t mappingEngine_attributes = {
   .name = "mappingEngine",
-  .stack_size = 512 * 4,
+  .stack_size = 700 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for debugUartMutex */
@@ -189,13 +190,14 @@ void StartDefaultTask(void *argument)
       xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 
 
-//      //上传lidar数据
+      //上传lidar数据
 //      for (int i = 0; i < 360; ++i) {
-//          snprintf(message, 64, "%d %d %d\r\n", i, lidarPointData[i].distance, lidarPointData[i].intensity);
+//          snprintf(message, 64, "%d %d %d %.2lf %.2lf %.2lf\r\n", i, lidarPointData[i].distance, lidarPointData[i].intensity, lidarPointData[i].x, lidarPointData[i].y, lidarPointData[i].radian);
 //          xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
 //          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
 //          xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 //      }
+
 
       snprintf(message, 64, "time_stamp:%d\r\n", lidar_time_stamp);
       xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
@@ -274,26 +276,27 @@ void MappingEngine(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1000);
-    Init_Robot_Map();
-    Update_Map();
-
-
-    char message[128] = {0};
-      //上传地图
-      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
-      int messageIndex = 0;
-      for (int y = MAP_Y_SIZE - 1; y >= 0; --y) {
-          memset(message, 0, 64);
-          messageIndex = 0;
-          for (int x = 0; x < MAP_X_SIZE; ++x) {
-              message[messageIndex++] = slamMap[x][y];
-          }
-          message[messageIndex++] = '\r';
-          message[messageIndex++] = '\n';
-          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+    osDelay(1);
+      struct NextLoc nextLoc = Find_Next_Loc();
+      if (nextLoc.ret) {
+//          char message[64] = {0};
+//          snprintf(message, 64, "radian:%.2lf\r\n", nextLoc.radian);
+//          xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+//          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+//          xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+          SpinTo(nextLoc.radian);
+          ClearSpeed();
+          MoveForward(60);
+          CommitSpeed();
+//          osDelay(pdMS_TO_TICKS(1000));
+      } else {
+          ClearSpeed();
+          MoveForward(60);
+          CommitSpeed();
+//          osDelay(pdMS_TO_TICKS(1000));
       }
-      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+
+
   }
   /* USER CODE END MappingEngine */
 }

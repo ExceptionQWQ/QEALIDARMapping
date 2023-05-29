@@ -43,6 +43,10 @@ cmsis_os.h
 ../Core/Inc/cmsis_os.h
 semphr.h
 ../Core/Inc/semphr.h
+math.h
+../Core/Inc/math.h
+imu.h
+../Core/Inc/imu.h
 
 ../Core/Inc/main.h
 stm32f1xx_hal.h

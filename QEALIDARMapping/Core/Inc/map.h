@@ -12,13 +12,9 @@
 #include "math.h"
 #include "lidar.h"
 
-#define PI 3.1415926
 #define MAP_X_SIZE 80
 #define MAP_Y_SIZE 80
 #define MAP_SIDE_LENGTH 10
-
-extern char slamMap[MAP_X_SIZE][MAP_Y_SIZE];
-
 
 
 volatile struct RobotPos
@@ -28,6 +24,11 @@ volatile struct RobotPos
     double radian; //弧度 逆时针为正
 };
 
+struct NextLoc
+{
+    int ret;
+    double radian;
+};
 
 extern volatile struct RobotPos robotPos;
 
@@ -35,6 +36,6 @@ extern volatile struct RobotPos robotPos;
 void Init_Robot_Map();
 void Init_Robot_Pos();
 void Update_Map();
-
+struct NextLoc Find_Next_Loc();
 
 #endif

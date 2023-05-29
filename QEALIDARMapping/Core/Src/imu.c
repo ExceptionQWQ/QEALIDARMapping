@@ -68,7 +68,7 @@ void HandleIMUPackage(int cmd, uint8_t* data, int len)
 
         robotIMU.roll = -msgAhrs->Roll;
         robotIMU.pitch = -msgAhrs->Pitch;
-        robotIMU.heading = msgAhrs->Heading;
+        robotIMU.heading = 2 * PI - msgAhrs->Heading;
     }
 }
 void DecodeIMUPackage()

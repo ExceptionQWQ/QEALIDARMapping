@@ -120,6 +120,9 @@
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Inc/map.h">
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
+		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Inc/motion.h">
+			<Option target="QEALIDARMapping.elf"/>
+		</Unit>
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Inc/stm32f1xx_hal_conf.h">
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
@@ -151,6 +154,9 @@
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/map.c">
+			<Option target="QEALIDARMapping.elf"/>
+		</Unit>
+		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/motion.c">
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/stm32f1xx_hal_msp.c">

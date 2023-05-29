@@ -42,6 +42,10 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
 
+
+#define PI 3.1415926
+
+
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

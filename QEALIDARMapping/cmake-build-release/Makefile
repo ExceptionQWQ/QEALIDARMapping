@@ -304,6 +304,33 @@ Core/Src/map.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.s
 .PHONY : Core/Src/map.c.s
 
+Core/Src/motion.obj: Core/Src/motion.c.obj
+
+.PHONY : Core/Src/motion.obj
+
+# target to build an object file
+Core/Src/motion.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.obj
+.PHONY : Core/Src/motion.c.obj
+
+Core/Src/motion.i: Core/Src/motion.c.i
+
+.PHONY : Core/Src/motion.i
+
+# target to preprocess a source file
+Core/Src/motion.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.i
+.PHONY : Core/Src/motion.c.i
+
+Core/Src/motion.s: Core/Src/motion.c.s
+
+.PHONY : Core/Src/motion.s
+
+# target to generate assembly for a file
+Core/Src/motion.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.s
+.PHONY : Core/Src/motion.c.s
+
 Core/Src/stm32f1xx_hal_msp.obj: Core/Src/stm32f1xx_hal_msp.c.obj
 
 .PHONY : Core/Src/stm32f1xx_hal_msp.obj
@@ -1231,6 +1258,9 @@ help:
 	@echo "... Core/Src/map.obj"
 	@echo "... Core/Src/map.i"
 	@echo "... Core/Src/map.s"
+	@echo "... Core/Src/motion.obj"
+	@echo "... Core/Src/motion.i"
+	@echo "... Core/Src/motion.s"
 	@echo "... Core/Src/stm32f1xx_hal_msp.obj"
 	@echo "... Core/Src/stm32f1xx_hal_msp.i"
 	@echo "... Core/Src/stm32f1xx_hal_msp.s"

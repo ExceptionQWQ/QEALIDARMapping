@@ -9,6 +9,8 @@
 #include "task.h"
 #include "cmsis_os.h"
 #include "semphr.h"
+#include "math.h"
+#include "imu.h"
 
 #define POINT_PER_PACK 12
 #define HEADER 0x54
@@ -43,6 +45,9 @@ struct LidarPointData
 {
     uint16_t distance;
     uint8_t intensity;
+    double x;
+    double y;
+    double radian;
 };
 
 extern uint16_t lidar_time_stamp;
