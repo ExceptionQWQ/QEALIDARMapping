@@ -64,7 +64,7 @@
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 256 * 4,
+  .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for imuDecoder */
@@ -85,14 +85,7 @@ const osThreadAttr_t lidarDecoder_attributes = {
 osThreadId_t mappingEngineHandle;
 const osThreadAttr_t mappingEngine_attributes = {
   .name = "mappingEngine",
-  .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
-};
-/* Definitions for circleDetect */
-osThreadId_t circleDetectHandle;
-const osThreadAttr_t circleDetect_attributes = {
-  .name = "circleDetect",
-  .stack_size = 512 * 4,
+  .stack_size = 700 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for debugUartMutex */
@@ -110,7 +103,6 @@ void StartDefaultTask(void *argument);
 void IMUDecoder(void *argument);
 void LidarDecoder(void *argument);
 void MappingEngine(void *argument);
-void CircleDetect(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -156,9 +148,6 @@ void MX_FREERTOS_Init(void) {
   /* creation of mappingEngine */
   mappingEngineHandle = osThreadNew(MappingEngine, NULL, &mappingEngine_attributes);
 
-  /* creation of circleDetect */
-  circleDetectHandle = osThreadNew(CircleDetect, NULL, &circleDetect_attributes);
-
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -195,20 +184,23 @@ void StartDefaultTask(void *argument)
 //      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
 //      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 //
-//      //上传imu数据
-//      snprintf(message, 64, "roll:%.2lf pitch:%.2lf heading:%.2lf\r\n", robotIMU.roll, robotIMU.pitch, robotIMU.heading);
-//      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
-//      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
-//      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+      //上传imu数据
+      snprintf(message, 64, "roll:%.2lf pitch:%.2lf heading:%.2lf\r\n", robotIMU.roll, robotIMU.pitch, robotIMU.heading);
+      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 
 
-      //上传lidar数据
+
+//      //上传lidar数据
 //      for (int i = 0; i < 360; ++i) {
-//          snprintf(message, 64, "%d %d %d %.2lf %.2lf %.2lf\r\n", i, lidarPointData[i].distance, lidarPointData[i].intensity, lidarPointData[i].x, lidarPointData[i].y, lidarPointData[i].radian);
+//          snprintf(message, 64, "%d %d %d %d %d %.2lf\r\n", i, lidarPointData[i].distance, lidarPointData[i].intensity,
+//                   lidarPointData[i].x, lidarPointData[i].y, lidarPointData[i].radian);
 //          xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
 //          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
 //          xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 //      }
+
 
 
       snprintf(message, 64, "time_stamp:%d\r\n", lidar_time_stamp);
@@ -233,13 +225,16 @@ void IMUDecoder(void *argument)
 {
   /* USER CODE BEGIN IMUDecoder */
   imuTaskHandle = xTaskGetCurrentTaskHandle(); //将当前任务句柄送给imu
-  HAL_UART_Receive_IT(&huart2, imuRecvBuff1, 1); //开启imu串口通信
   /* Infinite loop */
   for(uint32_t cnt = 0; ; ++cnt)
   {
+      if (HAL_UART_STATE_READY == HAL_UART_GetState(&huart2)) {
+          HAL_UART_Receive_DMA(&huart2, imuRecvBuff, 128); //开启imu串口通信
+      }
+
       uint32_t value = 0;
-      if (pdTRUE == xTaskNotifyWait(0, 0xffffffff, &value, portMAX_DELAY) && value == 0x12345678) {
-          DecodeIMUPackage(); //解析imu数据包
+      if (pdTRUE == xTaskNotifyWait(0, 0xffffffff, &value, pdMS_TO_TICKS(100)) && value == 0x12345678) {
+          while (!DecodeIMUPackage()) {} //解析imu数据包
       }
       osDelay(1);
   }
@@ -257,16 +252,18 @@ void LidarDecoder(void *argument)
 {
   /* USER CODE BEGIN LidarDecoder */
   debugUartMutex = debugUartMutexHandle;
-  lidarDecoderHandle = xTaskGetCurrentTaskHandle(); //将当前任务句柄送给lidar
-  HAL_UART_Receive_IT(&huart3, lidarRecvBuff1, 1); //开启lidar串口通信
+  lidarTaskHandle = xTaskGetCurrentTaskHandle(); //将当前任务句柄送给lidar
 
   /* Infinite loop */
   for(uint32_t cnt = 0; ; ++cnt)
   {
-      //不知道为什么串口3的抢占优先级必须小于5
-      while (1) {
-          int ret = DecodeLIDARPackage();
-          if (ret == 0) break;
+      if (HAL_UART_STATE_READY == HAL_UART_GetState(&huart3)) {
+          HAL_UART_Receive_DMA(&huart3, lidarRecvBuff, 1024); //开启lidar串口通信
+      }
+
+      uint32_t value = 0;
+      if (pdTRUE == xTaskNotifyWait(0, 0xffffffff, &value, pdMS_TO_TICKS(100)) && value == 0x12345678) {
+          while (!DecodeLIDARPackage()) {} //解析lidar数据包
       }
       osDelay(1);
   }
@@ -288,35 +285,7 @@ void MappingEngine(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1000);
-//      struct NextLoc nextLoc = Find_Next_Loc();
-//      if (nextLoc.ret) {
-//          SpinTo(nextLoc.radian);
-//          ClearSpeed();
-//          MoveForward(60);
-//          CommitSpeed();
-//      } else {
-//          ClearSpeed();
-//          MoveForward(60);
-//          CommitSpeed();
-//      }
-  }
-  /* USER CODE END MappingEngine */
-}
-
-/* USER CODE BEGIN Header_CircleDetect */
-/**
-* @brief Function implementing the circleDetect thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_CircleDetect */
-void CircleDetect(void *argument)
-{
-  /* USER CODE BEGIN CircleDetect */
-  /* Infinite loop */
-  for(;;)
-  {
+      ClearLidarData();
     osDelay(1000);
       struct Detect_Circle_Result detectCircleResult = Ransac_Circles(105, 115);
       char message[64] = {0};
@@ -326,7 +295,7 @@ void CircleDetect(void *argument)
       xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 
       if (detectCircleResult.radius && detectCircleResult.thresh > 15) {
-          double k = atan(detectCircleResult.y / detectCircleResult.x);
+          double k = atan((double)detectCircleResult.y / detectCircleResult.x);
           if (detectCircleResult.x > 0 && detectCircleResult.y > 0) {
               k += 0;
           } else if (detectCircleResult.x < 0 && detectCircleResult.y > 0) {
@@ -368,7 +337,7 @@ void CircleDetect(void *argument)
       ClearSpeed();
       CommitSpeed();
   }
-  /* USER CODE END CircleDetect */
+  /* USER CODE END MappingEngine */
 }
 
 /* Private application code --------------------------------------------------*/

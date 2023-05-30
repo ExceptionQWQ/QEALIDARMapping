@@ -52,6 +52,39 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.obj: ../Middlewares/
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.obj: ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.obj: ../Core/Src/detect_circle.c
 
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Core/Inc/dma.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Core/Inc/main.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Core/Inc/stm32f1xx_hal_conf.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/CMSIS/Include/cmsis_armcc.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/CMSIS/Include/cmsis_armclang.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/CMSIS/Include/cmsis_compiler.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/CMSIS/Include/cmsis_gcc.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/CMSIS/Include/cmsis_iccarm.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/CMSIS/Include/cmsis_version.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/CMSIS/Include/core_cm3.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/CMSIS/Include/mpu_armv7.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Core/Src/dma.c
+
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj: ../Core/Inc/FreeRTOSConfig.h
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj: ../Core/Inc/detect_circle.h
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj: ../Core/Inc/imu.h
@@ -232,6 +265,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.obj: ../Middlewares/Third_Pa
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.obj: ../Core/Src/lidar.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj: ../Core/Inc/FreeRTOSConfig.h
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj: ../Core/Inc/dma.h
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj: ../Core/Inc/gpio.h
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj: ../Core/Inc/imu.h
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj: ../Core/Inc/lidar.h

@@ -31,8 +31,8 @@ struct Detect_Circle_Result Ransac_Circles(int minR, int maxR)
         if (lidarPointData[(angle + 4) % 360].distance < 300) continue;
 
         double x1 = lidarPointData[angle % 360].x, y1 = lidarPointData[angle % 360].y;
-        double x2 = lidarPointData[(angle + 2) % 360].x, y2 = lidarPointData[(angle + 2) % 360].y;
-        double x3 = lidarPointData[(angle + 4) % 360].x, y3 = lidarPointData[(angle + 4) % 360].y;
+        double x2 = lidarPointData[(angle + 5) % 360].x, y2 = lidarPointData[(angle + 5) % 360].y;
+        double x3 = lidarPointData[(angle + 10) % 360].x, y3 = lidarPointData[(angle + 10) % 360].y;
         struct Get_Circle_Result getCircleResult = Get_Circle(x1, y1, x2, y2, x3, y3);
         if (getCircleResult.radius < minR || getCircleResult.radius > maxR) continue;;
         int cnt = 0; //计算圆上点的个数

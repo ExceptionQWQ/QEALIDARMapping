@@ -8,8 +8,8 @@
 
 struct Detect_Circle_Result
 {
-    double x;
-    double y;
+    int x;
+    int y;
     int thresh;
     int32_t radius;
 };

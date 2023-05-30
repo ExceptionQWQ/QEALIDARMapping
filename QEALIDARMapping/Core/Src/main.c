@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "dma.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -62,6 +63,14 @@ void MX_FREERTOS_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef* huart)
+{
+    if (huart->Instance == USART2) {
+        IMU_RxHalfCpltCallback();
+    } else if (huart->Instance == USART3) {
+        LIDAR_RxHalfCpltCallback();
+    }
+}
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart)
 {
@@ -102,13 +111,14 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
+  MX_DMA_Init();
   MX_GPIO_Init();
-  MX_TIM3_Init();
-  MX_TIM4_Init();
-  MX_TIM8_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_USART3_UART_Init();
+  MX_TIM3_Init();
+  MX_TIM4_Init();
+  MX_TIM8_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
 

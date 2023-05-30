@@ -16,8 +16,7 @@
 #define HEADER 0x54
 
 //使用双缓冲
-extern uint8_t lidarRecvBuff1[512];
-extern uint8_t lidarRecvBuff2[512];
+extern uint8_t lidarRecvBuff[1024];
 extern volatile int lidarRecvStatus;
 extern volatile uint8_t* lidarPackage; //等待处理的数据包
 extern uint8_t lidarBuff[1024];
@@ -61,6 +60,7 @@ static const uint8_t CrcTable[256] ={
 
 extern osThreadId_t lidarTaskHandle;
 
+void LIDAR_RxHalfCpltCallback();
 void LIDAR_RxCpltCallback();
 int DecodeLIDARPackage();
 void ClearLidarData();

@@ -169,6 +169,33 @@ Core/Src/detect_circle.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.s
 .PHONY : Core/Src/detect_circle.c.s
 
+Core/Src/dma.obj: Core/Src/dma.c.obj
+
+.PHONY : Core/Src/dma.obj
+
+# target to build an object file
+Core/Src/dma.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj
+.PHONY : Core/Src/dma.c.obj
+
+Core/Src/dma.i: Core/Src/dma.c.i
+
+.PHONY : Core/Src/dma.i
+
+# target to preprocess a source file
+Core/Src/dma.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.i
+.PHONY : Core/Src/dma.c.i
+
+Core/Src/dma.s: Core/Src/dma.c.s
+
+.PHONY : Core/Src/dma.s
+
+# target to generate assembly for a file
+Core/Src/dma.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.s
+.PHONY : Core/Src/dma.c.s
+
 Core/Src/freertos.obj: Core/Src/freertos.c.obj
 
 .PHONY : Core/Src/freertos.obj
@@ -1270,6 +1297,9 @@ help:
 	@echo "... Core/Src/detect_circle.obj"
 	@echo "... Core/Src/detect_circle.i"
 	@echo "... Core/Src/detect_circle.s"
+	@echo "... Core/Src/dma.obj"
+	@echo "... Core/Src/dma.i"
+	@echo "... Core/Src/dma.s"
 	@echo "... Core/Src/freertos.obj"
 	@echo "... Core/Src/freertos.i"
 	@echo "... Core/Src/freertos.s"

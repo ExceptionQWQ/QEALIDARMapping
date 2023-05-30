@@ -1,8 +1,7 @@
 #include "lidar.h"
 
 //使用双缓冲
-uint8_t lidarRecvBuff1[512];
-uint8_t lidarRecvBuff2[512];
+uint8_t lidarRecvBuff[1024];
 volatile int lidarRecvStatus;
 volatile uint8_t* lidarPackage; //等待处理的数据包
 uint8_t lidarBuff[1024];
@@ -24,17 +23,22 @@ uint8_t CalCRC8(uint8_t *p, uint8_t len)
     return crc;
 }
 
+void LIDAR_RxHalfCpltCallback()
+{
+    lidarPackage = lidarRecvBuff + 0;
+    //通知解析lidar任务
+    BaseType_t flag = 0;
+    xTaskNotifyFromISR(lidarTaskHandle, 0x12345678, eSetValueWithOverwrite, &flag);
+    portYIELD_FROM_ISR(flag);
+}
+
 void LIDAR_RxCpltCallback()
 {
-    if (lidarRecvStatus == 0) {
-        lidarRecvStatus = 1;
-        lidarPackage = lidarRecvBuff1;
-        HAL_UART_Receive_IT(&huart3, lidarRecvBuff2, 512);
-    } else {
-        lidarRecvStatus = 0;
-        lidarPackage = lidarRecvBuff2;
-        HAL_UART_Receive_IT(&huart3, lidarRecvBuff1, 512);
-    }
+    lidarPackage = lidarRecvBuff + 512;
+    //通知解析lidar任务
+    BaseType_t flag = 0;
+    xTaskNotifyFromISR(lidarTaskHandle, 0x12345678, eSetValueWithOverwrite, &flag);
+    portYIELD_FROM_ISR(flag);
 }
 
 int DecodeLIDARPackage()
@@ -72,14 +76,15 @@ int DecodeLIDARPackage()
             for (int i = 0; i < 12; ++i) {
                 int angle = (int)((liDarFrameTypeDef->start_angle + step * i) / 100.0);
                 angle = 360 - angle; //转换成逆时针方向
-                uint16_t distance = liDarFrameTypeDef->point[i].distance;
+                int distance = liDarFrameTypeDef->point[i].distance;
                 uint8_t intensity = liDarFrameTypeDef->point[i].intensity;
                 angle += 180; //逆时针旋转180度
                 if (angle > 360) angle -= 360;
                 if (angle < 0) angle = 0;
                 if (angle > 360) angle = 360;
+
                 lidarPointData[angle].distance = distance;
-                lidarPointData[angle].intensity = distance;
+                lidarPointData[angle].intensity = intensity;
                 lidarPointData[angle].x = distance * cos(PI / 180 * angle);
                 lidarPointData[angle].y = distance * sin(PI / 180 * angle);
                 lidarPointData[angle].radian = robotIMU.heading + PI / 180 * angle;

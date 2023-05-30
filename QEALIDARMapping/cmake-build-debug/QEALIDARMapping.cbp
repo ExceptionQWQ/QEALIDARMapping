@@ -108,6 +108,9 @@
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Inc/detect_circle.h">
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
+		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Inc/dma.h">
+			<Option target="QEALIDARMapping.elf"/>
+		</Unit>
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Inc/gpio.h">
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
@@ -142,6 +145,9 @@
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/detect_circle.c">
+			<Option target="QEALIDARMapping.elf"/>
+		</Unit>
+		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/dma.c">
 			<Option target="QEALIDARMapping.elf"/>
 		</Unit>
 		<Unit filename="/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/freertos.c">

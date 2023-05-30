@@ -29,6 +29,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   )
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/detect_circle.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.obj"
+  "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/dma.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/freertos.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/gpio.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/imu.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj"

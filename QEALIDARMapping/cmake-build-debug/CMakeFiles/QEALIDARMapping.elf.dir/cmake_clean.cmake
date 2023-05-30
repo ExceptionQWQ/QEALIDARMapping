@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.obj"
+  "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj"
   "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj"
   "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.obj"
   "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj"

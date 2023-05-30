@@ -11,8 +11,7 @@
 
 
 
-extern uint8_t imuRecvBuff1[64];
-extern uint8_t imuRecvBuff2[64];
+extern uint8_t imuRecvBuff[128];
 extern volatile int imuRecvStatus;
 extern volatile uint8_t* imuPackage; //等待处理的数据包
 extern uint8_t imuBuff[1024];
@@ -61,6 +60,7 @@ extern volatile struct RobotIMU robotIMU;
 extern osThreadId_t imuTaskHandle;
 
 void IMU_RxCpltCallback();
-void DecodeIMUPackage();
+void IMU_RxHalfCpltCallback();
+int DecodeIMUPackage();
 
 #endif

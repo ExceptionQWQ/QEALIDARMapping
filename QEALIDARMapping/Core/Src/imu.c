@@ -1,8 +1,7 @@
 #include "imu.h"
 
 //使用双缓冲
-uint8_t imuRecvBuff1[64] = {0};
-uint8_t imuRecvBuff2[64] = {0};
+uint8_t imuRecvBuff[128] = {0};
 volatile int imuRecvStatus = 0;
 volatile uint8_t* imuPackage = 0; //等待处理的数据包
 uint8_t imuBuff[1024] = {0};
@@ -38,26 +37,24 @@ uint16_t CRC16_Table(uint8_t* p, uint8_t counter) {
     return (crc16);
 }
 
+void IMU_RxHalfCpltCallback()
+{
+    imuPackage = imuRecvBuff + 0;
+    //通知解析imu任务
+    BaseType_t flag = 0;
+    xTaskNotifyFromISR(imuTaskHandle, 0x12345678, eSetValueWithOverwrite, &flag);
+    portYIELD_FROM_ISR(flag);
+}
+
 void IMU_RxCpltCallback()
 {
-    if (imuRecvStatus == 0) {
-        imuRecvStatus = 1;
-        imuPackage = imuRecvBuff1;
-        HAL_UART_Receive_IT(&huart2, imuRecvBuff2, 64);
-        //通知解析imu任务
-        BaseType_t flag = 0;
-        xTaskNotifyFromISR(imuTaskHandle, 0x12345678, eSetValueWithOverwrite, &flag);
-        portYIELD_FROM_ISR(flag);
-    } else {
-        imuRecvStatus = 0;
-        imuPackage = imuRecvBuff2;
-        HAL_UART_Receive_IT(&huart2, imuRecvBuff1, 64);
-        //通知解析imu任务
-        BaseType_t flag = 0;
-        xTaskNotifyFromISR(imuTaskHandle, 0x12345678, eSetValueWithOverwrite, &flag);
-        portYIELD_FROM_ISR(flag);
-    }
+    imuPackage = imuRecvBuff + 64;
+    //通知解析imu任务
+    BaseType_t flag = 0;
+    xTaskNotifyFromISR(imuTaskHandle, 0x12345678, eSetValueWithOverwrite, &flag);
+    portYIELD_FROM_ISR(flag);
 }
+
 
 void HandleIMUPackage(int cmd, uint8_t* data, int len)
 {
@@ -71,7 +68,7 @@ void HandleIMUPackage(int cmd, uint8_t* data, int len)
         robotIMU.heading = 2 * PI - msgAhrs->Heading;
     }
 }
-void DecodeIMUPackage()
+int DecodeIMUPackage()
 {
     if (imuPackage) {
         if (imuBuffOffset + 64 >= 1024) imuBuffOffset = 0;
@@ -96,6 +93,7 @@ void DecodeIMUPackage()
         imuBuffOffset -= packageStart;
     }
 
+    int flag2 = 0;
 
     //判断帧头
     uint8_t crc8 = CRC8_Table(imuBuff, 4);
@@ -108,11 +106,15 @@ void DecodeIMUPackage()
             uint16_t crc16FromBuff = (imuBuff[5] << 8) | imuBuff[6];
             uint16_t crc16 = CRC16_Table(imuBuff + 7, dataLen);
 
-            if (crc16 == crc16FromBuff) HandleIMUPackage(cmd, imuBuff + 7, dataLen);
+            if (crc16 == crc16FromBuff) {
+                HandleIMUPackage(cmd, imuBuff + 7, dataLen);
+                flag2 = 1;
+            }
 
             int frameLen = 5 + 2 + dataLen + 1;
             memcpy(imuBuff, imuBuff + frameLen, imuBuffOffset - frameLen);
             imuBuffOffset -= frameLen;
         }
     }
+    return flag2;
 }

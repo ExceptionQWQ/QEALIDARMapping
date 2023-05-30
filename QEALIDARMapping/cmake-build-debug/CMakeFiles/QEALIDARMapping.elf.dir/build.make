@@ -89,9 +89,22 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.s"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/detect_circle.c -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.s
 
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj: ../Core/Src/dma.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj"
+	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/dma.c
+
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.i"
+	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/dma.c > CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.i
+
+CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.s"
+	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/dma.c -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.s
+
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj: ../Core/Src/freertos.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/freertos.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.i: cmake_force
@@ -104,7 +117,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.obj: ../Core/Src/gpio.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/gpio.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.i: cmake_force
@@ -117,7 +130,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj: ../Core/Src/imu.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/imu.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.i: cmake_force
@@ -130,7 +143,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.obj: ../Core/Src/lidar.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/lidar.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.i: cmake_force
@@ -143,7 +156,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj: ../Core/Src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/main.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.i: cmake_force
@@ -156,7 +169,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.obj: ../Core/Src/map.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/map.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.i: cmake_force
@@ -169,7 +182,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.obj: ../Core/Src/motion.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/motion.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.i: cmake_force
@@ -182,7 +195,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj: ../Core/Src/stm32f1xx_hal_msp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/stm32f1xx_hal_msp.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_msp.c.i: cmake_force
@@ -195,7 +208,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_msp.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj: ../Core/Src/stm32f1xx_hal_timebase_tim.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/stm32f1xx_hal_timebase_tim.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.i: cmake_force
@@ -208,7 +221,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.s: cmak
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_it.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_it.c.obj: ../Core/Src/stm32f1xx_it.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_it.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_it.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_it.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/stm32f1xx_it.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_it.c.i: cmake_force
@@ -221,7 +234,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_it.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/syscalls.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/syscalls.c.obj: ../Core/Src/syscalls.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/syscalls.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/syscalls.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/syscalls.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/syscalls.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/syscalls.c.i: cmake_force
@@ -234,7 +247,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/syscalls.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/sysmem.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/sysmem.c.obj: ../Core/Src/sysmem.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/sysmem.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/sysmem.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/sysmem.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/sysmem.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/sysmem.c.i: cmake_force
@@ -247,7 +260,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/sysmem.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/system_stm32f1xx.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/system_stm32f1xx.c.obj: ../Core/Src/system_stm32f1xx.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/system_stm32f1xx.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/system_stm32f1xx.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/system_stm32f1xx.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/system_stm32f1xx.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/system_stm32f1xx.c.i: cmake_force
@@ -260,7 +273,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/system_stm32f1xx.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/tim.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/tim.c.obj: ../Core/Src/tim.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/tim.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/tim.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/tim.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/tim.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/tim.c.i: cmake_force
@@ -273,7 +286,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/tim.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/usart.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/usart.c.obj: ../Core/Src/usart.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/usart.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/usart.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/usart.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/usart.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/usart.c.i: cmake_force
@@ -286,7 +299,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/usart.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/wheel_pwm.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/wheel_pwm.c.obj: ../Core/Src/wheel_pwm.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/wheel_pwm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/wheel_pwm.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/wheel_pwm.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/wheel_pwm.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/wheel_pwm.c.i: cmake_force
@@ -299,12 +312,12 @@ CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/wheel_pwm.c.s: cmake_force
 
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Startup/startup_stm32f103rctx.s.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Core/Startup/startup_stm32f103rctx.s.obj: ../Core/Startup/startup_stm32f103rctx.s
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building ASM object CMakeFiles/QEALIDARMapping.elf.dir/Core/Startup/startup_stm32f103rctx.s.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building ASM object CMakeFiles/QEALIDARMapping.elf.dir/Core/Startup/startup_stm32f103rctx.s.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Core/Startup/startup_stm32f103rctx.s.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Startup/startup_stm32f103rctx.s
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.i: cmake_force
@@ -317,7 +330,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.i: cmake_force
@@ -330,7 +343,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.i: cmake_force
@@ -343,7 +356,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c.i: cmake_force
@@ -356,7 +369,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c.i: cmake_force
@@ -369,7 +382,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c.i: cmake_force
@@ -382,7 +395,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.i: cmake_force
@@ -395,7 +408,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c.i: cmake_force
@@ -408,7 +421,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c.i: cmake_force
@@ -421,7 +434,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.i: cmake_force
@@ -434,7 +447,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c.i: cmake_force
@@ -447,7 +460,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.i: cmake_force
@@ -460,7 +473,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.i: cmake_force
@@ -473,7 +486,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.i: cmake_force
@@ -486,7 +499,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ha
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.i: cmake_force
@@ -499,7 +512,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj: ../Middlewares/Third_Party/FreeRTOS/Source/croutine.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Middlewares/Third_Party/FreeRTOS/Source/croutine.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.i: cmake_force
@@ -512,7 +525,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/crout
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.i: cmake_force
@@ -525,7 +538,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Middlewares/Third_Party/FreeRTOS/Source/list.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.i: cmake_force
@@ -538,7 +551,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj: ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.i: cmake_force
@@ -551,7 +564,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/porta
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj: ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.i: cmake_force
@@ -564,7 +577,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/porta
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj: ../Middlewares/Third_Party/FreeRTOS/Source/queue.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Middlewares/Third_Party/FreeRTOS/Source/queue.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.i: cmake_force
@@ -577,7 +590,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.i: cmake_force
@@ -590,7 +603,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/strea
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj: ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Middlewares/Third_Party/FreeRTOS/Source/tasks.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.i: cmake_force
@@ -603,7 +616,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj: CMakeFiles/QEALIDARMapping.elf.dir/flags.make
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj: ../Middlewares/Third_Party/FreeRTOS/Source/timers.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj"
 	/Applications/Arm/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj -c /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Middlewares/Third_Party/FreeRTOS/Source/timers.c
 
 CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.i: cmake_force
@@ -617,6 +630,7 @@ CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timer
 # Object files for target QEALIDARMapping.elf
 QEALIDARMapping_elf_OBJECTS = \
 "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.obj" \
+"CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj" \
 "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj" \
 "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.obj" \
 "CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj" \
@@ -663,6 +677,7 @@ QEALIDARMapping_elf_OBJECTS = \
 QEALIDARMapping_elf_EXTERNAL_OBJECTS =
 
 QEALIDARMapping.elf: CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.obj
+QEALIDARMapping.elf: CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj
 QEALIDARMapping.elf: CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj
 QEALIDARMapping.elf: CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.obj
 QEALIDARMapping.elf: CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj
@@ -706,7 +721,7 @@ QEALIDARMapping.elf: CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/
 QEALIDARMapping.elf: CMakeFiles/QEALIDARMapping.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
 QEALIDARMapping.elf: CMakeFiles/QEALIDARMapping.elf.dir/build.make
 QEALIDARMapping.elf: CMakeFiles/QEALIDARMapping.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Linking C executable QEALIDARMapping.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Linking C executable QEALIDARMapping.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/QEALIDARMapping.elf.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/QEALIDARMapping.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-debug/QEALIDARMapping.bin"

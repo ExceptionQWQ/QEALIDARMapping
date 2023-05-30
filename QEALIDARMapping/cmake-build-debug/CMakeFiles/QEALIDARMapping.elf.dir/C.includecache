@@ -508,10 +508,6 @@ list.h
 
 ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h
 
-/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/detect_circle.c
-detect_circle.h
-/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/detect_circle.h
-
 /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/freertos.c
 FreeRTOS.h
 /Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/FreeRTOS.h
