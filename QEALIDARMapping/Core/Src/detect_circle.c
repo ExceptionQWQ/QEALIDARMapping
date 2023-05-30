@@ -1,63 +1,54 @@
 #include "detect_circle.h"
 
-uint8_t hough_trans[HOUGH_X_SIZE][HOUGH_Y_SIZE];
 
-void Clear_Hough_Result()
+struct Get_Circle_Result Get_Circle(double x1, double y1, double x2, double y2, double x3, double y3)
 {
-    for (int i = 0; i < HOUGH_X_SIZE; ++i) {
-        for (int j = 0; j < HOUGH_Y_SIZE; ++j) {
-            hough_trans[i][j] = 0;
-        }
-    }
+    struct Get_Circle_Result getCircleResult;
+    double a = 2 * (x2 - x1);
+    double b = 2 * (y2 - y1);
+    double c = x2 * x2 + y2 * y2 - x1 * x1 - y1 * y1;
+    double d = 2 * (x3 - x2);
+    double e = 2 * (y3 - y2);
+    double f = x3 * x3 + y3 * y3 - x2 * x2 - y2 * y2;
+    getCircleResult.x = (b * f - e * c) / (b * d - e * a);
+    getCircleResult.y = (d * c - a * f) / (b * d - e * a);
+    getCircleResult.radius = sqrt((getCircleResult.x - x1) * (getCircleResult.x - x1) + (getCircleResult.y - y1) * (getCircleResult.y - y1));
+    return getCircleResult;
 }
 
-struct Find_Max_Result Find_Max_Loc()
+struct Detect_Circle_Result Ransac_Circles(int minR, int maxR)
 {
-    uint8_t maxLoc = 0;
-    struct Find_Max_Result findMaxResult = {};
-    for (int i = 0; i < HOUGH_X_SIZE; ++i) {
-        for (int j = 0; j < HOUGH_Y_SIZE; ++j) {
-            if (hough_trans[i][j] > maxLoc) {
-                maxLoc = hough_trans[i][j];
-                findMaxResult.x = i;
-                findMaxResult.y = j;
-            }
+    struct Detect_Circle_Result detectCircleResult = {};
+    int maxCnt = 0;
+
+    //按0-360的顺序连续选取3个点当作圆上的3点
+    for (int angle = 0; angle < 370; angle += 1) {
+        if (lidarPointData[angle % 360].intensity < 30) continue;
+        if (lidarPointData[(angle + 2) % 360].intensity < 30) continue;
+        if (lidarPointData[(angle + 4) % 360].intensity < 30) continue;
+        if (lidarPointData[angle % 360].distance < 300) continue;
+        if (lidarPointData[(angle + 2) % 360].distance < 300) continue;
+        if (lidarPointData[(angle + 4) % 360].distance < 300) continue;
+
+        double x1 = lidarPointData[angle % 360].x, y1 = lidarPointData[angle % 360].y;
+        double x2 = lidarPointData[(angle + 2) % 360].x, y2 = lidarPointData[(angle + 2) % 360].y;
+        double x3 = lidarPointData[(angle + 4) % 360].x, y3 = lidarPointData[(angle + 4) % 360].y;
+        struct Get_Circle_Result getCircleResult = Get_Circle(x1, y1, x2, y2, x3, y3);
+        if (getCircleResult.radius < minR || getCircleResult.radius > maxR) continue;;
+        int cnt = 0; //计算圆上点的个数
+        for (int i = 0; i < 360; ++i) {
+            if (lidarPointData[i].intensity < 30) continue;
+            double r = sqrt(pow(lidarPointData[i].x - getCircleResult.x, 2) + pow(lidarPointData[i].y - getCircleResult.y, 2));
+            if (fabs(r - getCircleResult.radius) < 10) ++cnt;
+        }
+        if (cnt > maxCnt) {
+            maxCnt = cnt;
+            detectCircleResult.thresh = maxCnt;
+            detectCircleResult.radius = getCircleResult.radius;
+            detectCircleResult.x = getCircleResult.x;
+            detectCircleResult.y = getCircleResult.y;
         }
     }
-    return findMaxResult;
-}
 
-
-struct Detect_Circle_Result Hough_Circles(uint8_t threshold, int32_t radius)
-{
-    Clear_Hough_Result();
-    struct Detect_Circle_Result detectCircleResult;
-    for (int angle = 0; angle < 360; ++angle) { //枚举每个点,把它当作圆心
-        if (lidarPointData[angle].intensity < 30) continue;
-        if (lidarPointData[angle].distance > 2000) continue;
-        for (int circle_angle = 0; circle_angle < 360; circle_angle += HOUGH_CIRCLE_ENUM_STEP) {
-            double x = lidarPointData[angle].x;
-            double y = lidarPointData[angle].y;
-            x += radius * cos(PI / 180 * circle_angle);
-            y += radius * sin(PI / 180 * circle_angle);
-            x /= HOUGH_CIRCLE_SIDE_LEN;
-            y /= HOUGH_CIRCLE_SIDE_LEN;
-            x += HOUGH_X_CENTER;
-            y += HOUGH_Y_CENTER;
-            int tx = x, ty = y;
-            if (tx >= 0 && tx < HOUGH_X_SIZE && ty >= 0 && ty < HOUGH_Y_SIZE) {
-                hough_trans[tx][ty] += 1;
-            }
-        }
-    }
-    struct Find_Max_Result findMaxResult = Find_Max_Loc();
-    detectCircleResult.thresh = hough_trans[findMaxResult.x][findMaxResult.y];
-    detectCircleResult.x = (findMaxResult.x - HOUGH_X_CENTER) * HOUGH_CIRCLE_SIDE_LEN;
-    detectCircleResult.y = (findMaxResult.y - HOUGH_Y_CENTER) * HOUGH_CIRCLE_SIDE_LEN;
-    if (hough_trans[findMaxResult.x][findMaxResult.y] < threshold) {
-        detectCircleResult.radius = 0;
-    } else {
-        detectCircleResult.radius = radius;
-    }
     return detectCircleResult;
 }

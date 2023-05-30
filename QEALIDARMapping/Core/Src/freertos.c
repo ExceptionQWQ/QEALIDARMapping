@@ -285,22 +285,21 @@ void MappingEngine(void *argument)
   /* USER CODE BEGIN MappingEngine */
   Init_Robot_Map();
   Init_Robot_Pos();
-  Clear_Hough_Result();
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
-      struct NextLoc nextLoc = Find_Next_Loc();
-      if (nextLoc.ret) {
-          SpinTo(nextLoc.radian);
-          ClearSpeed();
-          MoveForward(60);
-          CommitSpeed();
-      } else {
-          ClearSpeed();
-          MoveForward(60);
-          CommitSpeed();
-      }
+    osDelay(1000);
+//      struct NextLoc nextLoc = Find_Next_Loc();
+//      if (nextLoc.ret) {
+//          SpinTo(nextLoc.radian);
+//          ClearSpeed();
+//          MoveForward(60);
+//          CommitSpeed();
+//      } else {
+//          ClearSpeed();
+//          MoveForward(60);
+//          CommitSpeed();
+//      }
   }
   /* USER CODE END MappingEngine */
 }
@@ -318,15 +317,15 @@ void CircleDetect(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
-      struct Detect_Circle_Result detectCircleResult = Hough_Circles(10, 125);
+    osDelay(1000);
+      struct Detect_Circle_Result detectCircleResult = Ransac_Circles(105, 115);
       char message[64] = {0};
       snprintf(message, 64, "r:%d x:%d y:%d thresh:%d\r\n", detectCircleResult.radius, detectCircleResult.x, detectCircleResult.y, detectCircleResult.thresh);
       xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
       HAL_UART_Transmit(&huart1, message, strlen(message), 100);
       xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
-      if (detectCircleResult.radius) {
-//          HAL_GPIO_WritePin(BEEP_GPIO_Port, BEEP_Pin, GPIO_PIN_SET);
+
+      if (detectCircleResult.radius && detectCircleResult.thresh > 15) {
           double k = atan(detectCircleResult.y / detectCircleResult.x);
           if (detectCircleResult.x > 0 && detectCircleResult.y > 0) {
               k += 0;
@@ -337,18 +336,37 @@ void CircleDetect(void *argument)
           } else {
               k += 2 * PI;
           }
-          vTaskSuspend(mappingEngineHandle);
-
-          k += lidarPointData[0].radian;
+          k += robotIMU.heading;
           if (k > 2 * PI) k -= 2 * PI;
-//          SpinTo(k);
 
-          vTaskResume(mappingEngineHandle);
-      }
-      else {
+          snprintf(message, 64, "heading:%.2lf spinto:%.2lf\r\n", robotIMU.heading, k);
+          xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+          xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
+
+          HAL_GPIO_WritePin(BEEP_GPIO_Port, BEEP_Pin, GPIO_PIN_SET);
+          SpinTo(k);
           HAL_GPIO_WritePin(BEEP_GPIO_Port, BEEP_Pin, GPIO_PIN_RESET);
+          ClearSpeed();
+          MoveForward(60);
+          CommitSpeed();
+          osDelay(1000);
+      } else {
+          struct NextLoc nextLoc = Find_Next_Loc();
+          if (nextLoc.ret) {
+              SpinTo(nextLoc.radian);
+              ClearSpeed();
+              MoveForward(60);
+              CommitSpeed();
+          } else {
+              ClearSpeed();
+              MoveForward(60);
+              CommitSpeed();
+          }
+          osDelay(1000);
       }
-
+      ClearSpeed();
+      CommitSpeed();
   }
   /* USER CODE END CircleDetect */
 }
