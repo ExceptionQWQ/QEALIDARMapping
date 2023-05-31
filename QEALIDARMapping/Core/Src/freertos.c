@@ -34,10 +34,8 @@
 #include "semphr.h"
 #include "wheel_pwm.h"
 #include "imu.h"
-#include "lidar.h"
-#include "map.h"
 #include "motion.h"
-#include "detect_circle.h"
+#include "robot.h"
 
 /* USER CODE END Includes */
 
@@ -74,18 +72,11 @@ const osThreadAttr_t imuDecoder_attributes = {
   .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
-/* Definitions for lidarDecoder */
-osThreadId_t lidarDecoderHandle;
-const osThreadAttr_t lidarDecoder_attributes = {
-  .name = "lidarDecoder",
+/* Definitions for robotCon */
+osThreadId_t robotConHandle;
+const osThreadAttr_t robotCon_attributes = {
+  .name = "robotCon",
   .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
-};
-/* Definitions for mappingEngine */
-osThreadId_t mappingEngineHandle;
-const osThreadAttr_t mappingEngine_attributes = {
-  .name = "mappingEngine",
-  .stack_size = 700 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for debugUartMutex */
@@ -101,8 +92,7 @@ const osMutexAttr_t debugUartMutex_attributes = {
 
 void StartDefaultTask(void *argument);
 void IMUDecoder(void *argument);
-void LidarDecoder(void *argument);
-void MappingEngine(void *argument);
+void RobotCon(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -132,6 +122,9 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
+
+  messageBufferHandle = xMessageBufferCreate(1024);
+
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
 
@@ -142,11 +135,8 @@ void MX_FREERTOS_Init(void) {
   /* creation of imuDecoder */
   imuDecoderHandle = osThreadNew(IMUDecoder, NULL, &imuDecoder_attributes);
 
-  /* creation of lidarDecoder */
-  lidarDecoderHandle = osThreadNew(LidarDecoder, NULL, &lidarDecoder_attributes);
-
-  /* creation of mappingEngine */
-  mappingEngineHandle = osThreadNew(MappingEngine, NULL, &mappingEngine_attributes);
+  /* creation of robotCon */
+  robotConHandle = osThreadNew(RobotCon, NULL, &robotCon_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -185,11 +175,10 @@ void StartDefaultTask(void *argument)
 //      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 //
       //上传imu数据
-      snprintf(message, 64, "roll:%.2lf pitch:%.2lf heading:%.2lf\r\n", robotIMU.roll, robotIMU.pitch, robotIMU.heading);
+      snprintf(message, 64, "[imu] roll:%.2lf pitch:%.2lf heading:%.2lf\r\n", robotIMU.roll, robotIMU.pitch, robotIMU.heading);
       xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
       HAL_UART_Transmit(&huart1, message, strlen(message), 100);
       xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
-
 
 
 //      //上传lidar数据
@@ -197,19 +186,18 @@ void StartDefaultTask(void *argument)
 //          snprintf(message, 64, "%d %d %d %d %d %.2lf\r\n", i, lidarPointData[i].distance, lidarPointData[i].intensity,
 //                   lidarPointData[i].x, lidarPointData[i].y, lidarPointData[i].radian);
 //          xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
-//          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+//          HAL_UART_Transmit(&huart4, message, strlen(message), 100);
 //          xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 //      }
 
 
+//      snprintf(message, 64, "time_stamp:%d\r\n", lidar_time_stamp);
+//      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
+//      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
+//      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 
-      snprintf(message, 64, "time_stamp:%d\r\n", lidar_time_stamp);
-      xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
-      HAL_UART_Transmit(&huart1, message, strlen(message), 100);
-      xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 
-
-      osDelay(1000);
+      osDelay(100);
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -241,103 +229,42 @@ void IMUDecoder(void *argument)
   /* USER CODE END IMUDecoder */
 }
 
-/* USER CODE BEGIN Header_LidarDecoder */
+/* USER CODE BEGIN Header_RobotCon */
 /**
-* @brief Function implementing the lidarDecoder thread.
+* @brief Function implementing the robotCon thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_LidarDecoder */
-void LidarDecoder(void *argument)
+/* USER CODE END Header_RobotCon */
+void RobotCon(void *argument)
 {
-  /* USER CODE BEGIN LidarDecoder */
-  debugUartMutex = debugUartMutexHandle;
-  lidarTaskHandle = xTaskGetCurrentTaskHandle(); //将当前任务句柄送给lidar
-
-  /* Infinite loop */
-  for(uint32_t cnt = 0; ; ++cnt)
-  {
-      if (HAL_UART_STATE_READY == HAL_UART_GetState(&huart3)) {
-          HAL_UART_Receive_DMA(&huart3, lidarRecvBuff, 1024); //开启lidar串口通信
-      }
-
-      uint32_t value = 0;
-      if (pdTRUE == xTaskNotifyWait(0, 0xffffffff, &value, pdMS_TO_TICKS(100)) && value == 0x12345678) {
-          while (!DecodeLIDARPackage()) {} //解析lidar数据包
-      }
-      osDelay(1);
-  }
-  /* USER CODE END LidarDecoder */
-}
-
-/* USER CODE BEGIN Header_MappingEngine */
-/**
-* @brief Function implementing the mappingEngine thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_MappingEngine */
-void MappingEngine(void *argument)
-{
-  /* USER CODE BEGIN MappingEngine */
-  Init_Robot_Map();
-  Init_Robot_Pos();
+  /* USER CODE BEGIN RobotCon */
+    robotConTask = robotConHandle;
+    HAL_UART_Receive_IT(&huart1, robotRecvBuff + robotRecvOffset, 1);
   /* Infinite loop */
   for(;;)
   {
-      ClearLidarData();
-    osDelay(1000);
-      struct Detect_Circle_Result detectCircleResult = Ransac_Circles(105, 115);
-      char message[64] = {0};
-      snprintf(message, 64, "r:%d x:%d y:%d thresh:%d\r\n", detectCircleResult.radius, detectCircleResult.x, detectCircleResult.y, detectCircleResult.thresh);
+    char message[128] = {0};
+    xMessageBufferReceive(messageBufferHandle, message, 128, portMAX_DELAY);
+
       xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
       HAL_UART_Transmit(&huart1, message, strlen(message), 100);
       xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
 
-      if (detectCircleResult.radius && detectCircleResult.thresh > 15) {
-          double k = atan((double)detectCircleResult.y / detectCircleResult.x);
-          if (detectCircleResult.x > 0 && detectCircleResult.y > 0) {
-              k += 0;
-          } else if (detectCircleResult.x < 0 && detectCircleResult.y > 0) {
-              k += PI;
-          } else if (detectCircleResult.x < 0 && detectCircleResult.y < 0) {
-              k += PI;
-          } else {
-              k += 2 * PI;
-          }
-          k += robotIMU.heading;
-          if (k > 2 * PI) k -= 2 * PI;
-
-          snprintf(message, 64, "heading:%.2lf spinto:%.2lf\r\n", robotIMU.heading, k);
-          xSemaphoreTake(debugUartMutexHandle, portMAX_DELAY); //获取串口调试资源
-          HAL_UART_Transmit(&huart1, message, strlen(message), 100);
-          xSemaphoreGive(debugUartMutexHandle); //释放串口调试资源
-
-          HAL_GPIO_WritePin(BEEP_GPIO_Port, BEEP_Pin, GPIO_PIN_SET);
-          SpinTo(k);
-          HAL_GPIO_WritePin(BEEP_GPIO_Port, BEEP_Pin, GPIO_PIN_RESET);
-          ClearSpeed();
-          MoveForward(60);
-          CommitSpeed();
-          osDelay(1000);
-      } else {
-          struct NextLoc nextLoc = Find_Next_Loc();
-          if (nextLoc.ret) {
-              SpinTo(nextLoc.radian);
-              ClearSpeed();
-              MoveForward(60);
-              CommitSpeed();
-          } else {
-              ClearSpeed();
-              MoveForward(60);
-              CommitSpeed();
-          }
-          osDelay(1000);
-      }
-      ClearSpeed();
-      CommitSpeed();
+    if (strstr(message, "[forward]") != NULL) {
+        double speed;
+        sscanf(message, "[forward] speed=%lf", &speed);
+        ClearSpeed();
+        MoveForward(speed);
+        CommitSpeed();
+    } else if (strstr(message, "[spin]") != NULL) {
+        double radian;
+        sscanf(message, "[spin] radian=%lf", &radian);
+        SpinTo(radian);
+    }
+    osDelay(1);
   }
-  /* USER CODE END MappingEngine */
+  /* USER CODE END RobotCon */
 }
 
 /* Private application code --------------------------------------------------*/

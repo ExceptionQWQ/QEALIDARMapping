@@ -28,15 +28,13 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "../Drivers/CMSIS/Include"
   )
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/detect_circle.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/dma.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/dma.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/freertos.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/freertos.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/gpio.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/gpio.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/imu.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.obj"
-  "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/lidar.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/main.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.obj"
-  "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/map.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/motion.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.obj"
+  "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/robot.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/robot.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/stm32f1xx_hal_msp.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/stm32f1xx_hal_timebase_tim.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj"
   "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/Core/Src/stm32f1xx_it.c" "/Users/mac/Desktop/QEALIDARMapping-WS/QEALIDARMapping/QEALIDARMapping/cmake-build-release/CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/stm32f1xx_it.c.obj"

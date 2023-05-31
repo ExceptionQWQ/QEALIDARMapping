@@ -1,0 +1,3 @@
+/home/pi/qea/build/CMakeFiles/rebuild_cache.dir
+/home/pi/qea/build/CMakeFiles/edit_cache.dir
+/home/pi/qea/build/CMakeFiles/qea.dir

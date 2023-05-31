@@ -142,33 +142,6 @@ QEALIDARMapping.elf/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/build
 .PHONY : QEALIDARMapping.elf/fast
 
-Core/Src/detect_circle.obj: Core/Src/detect_circle.c.obj
-
-.PHONY : Core/Src/detect_circle.obj
-
-# target to build an object file
-Core/Src/detect_circle.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.obj
-.PHONY : Core/Src/detect_circle.c.obj
-
-Core/Src/detect_circle.i: Core/Src/detect_circle.c.i
-
-.PHONY : Core/Src/detect_circle.i
-
-# target to preprocess a source file
-Core/Src/detect_circle.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.i
-.PHONY : Core/Src/detect_circle.c.i
-
-Core/Src/detect_circle.s: Core/Src/detect_circle.c.s
-
-.PHONY : Core/Src/detect_circle.s
-
-# target to generate assembly for a file
-Core/Src/detect_circle.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/detect_circle.c.s
-.PHONY : Core/Src/detect_circle.c.s
-
 Core/Src/dma.obj: Core/Src/dma.c.obj
 
 .PHONY : Core/Src/dma.obj
@@ -277,33 +250,6 @@ Core/Src/imu.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/imu.c.s
 .PHONY : Core/Src/imu.c.s
 
-Core/Src/lidar.obj: Core/Src/lidar.c.obj
-
-.PHONY : Core/Src/lidar.obj
-
-# target to build an object file
-Core/Src/lidar.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.obj
-.PHONY : Core/Src/lidar.c.obj
-
-Core/Src/lidar.i: Core/Src/lidar.c.i
-
-.PHONY : Core/Src/lidar.i
-
-# target to preprocess a source file
-Core/Src/lidar.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.i
-.PHONY : Core/Src/lidar.c.i
-
-Core/Src/lidar.s: Core/Src/lidar.c.s
-
-.PHONY : Core/Src/lidar.s
-
-# target to generate assembly for a file
-Core/Src/lidar.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/lidar.c.s
-.PHONY : Core/Src/lidar.c.s
-
 Core/Src/main.obj: Core/Src/main.c.obj
 
 .PHONY : Core/Src/main.obj
@@ -331,33 +277,6 @@ Core/Src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/main.c.s
 .PHONY : Core/Src/main.c.s
 
-Core/Src/map.obj: Core/Src/map.c.obj
-
-.PHONY : Core/Src/map.obj
-
-# target to build an object file
-Core/Src/map.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.obj
-.PHONY : Core/Src/map.c.obj
-
-Core/Src/map.i: Core/Src/map.c.i
-
-.PHONY : Core/Src/map.i
-
-# target to preprocess a source file
-Core/Src/map.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.i
-.PHONY : Core/Src/map.c.i
-
-Core/Src/map.s: Core/Src/map.c.s
-
-.PHONY : Core/Src/map.s
-
-# target to generate assembly for a file
-Core/Src/map.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/map.c.s
-.PHONY : Core/Src/map.c.s
-
 Core/Src/motion.obj: Core/Src/motion.c.obj
 
 .PHONY : Core/Src/motion.obj
@@ -384,6 +303,33 @@ Core/Src/motion.s: Core/Src/motion.c.s
 Core/Src/motion.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/motion.c.s
 .PHONY : Core/Src/motion.c.s
+
+Core/Src/robot.obj: Core/Src/robot.c.obj
+
+.PHONY : Core/Src/robot.obj
+
+# target to build an object file
+Core/Src/robot.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/robot.c.obj
+.PHONY : Core/Src/robot.c.obj
+
+Core/Src/robot.i: Core/Src/robot.c.i
+
+.PHONY : Core/Src/robot.i
+
+# target to preprocess a source file
+Core/Src/robot.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/robot.c.i
+.PHONY : Core/Src/robot.c.i
+
+Core/Src/robot.s: Core/Src/robot.c.s
+
+.PHONY : Core/Src/robot.s
+
+# target to generate assembly for a file
+Core/Src/robot.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/QEALIDARMapping.elf.dir/build.make CMakeFiles/QEALIDARMapping.elf.dir/Core/Src/robot.c.s
+.PHONY : Core/Src/robot.c.s
 
 Core/Src/stm32f1xx_hal_msp.obj: Core/Src/stm32f1xx_hal_msp.c.obj
 
@@ -1294,9 +1240,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... QEALIDARMapping.elf"
-	@echo "... Core/Src/detect_circle.obj"
-	@echo "... Core/Src/detect_circle.i"
-	@echo "... Core/Src/detect_circle.s"
 	@echo "... Core/Src/dma.obj"
 	@echo "... Core/Src/dma.i"
 	@echo "... Core/Src/dma.s"
@@ -1309,18 +1252,15 @@ help:
 	@echo "... Core/Src/imu.obj"
 	@echo "... Core/Src/imu.i"
 	@echo "... Core/Src/imu.s"
-	@echo "... Core/Src/lidar.obj"
-	@echo "... Core/Src/lidar.i"
-	@echo "... Core/Src/lidar.s"
 	@echo "... Core/Src/main.obj"
 	@echo "... Core/Src/main.i"
 	@echo "... Core/Src/main.s"
-	@echo "... Core/Src/map.obj"
-	@echo "... Core/Src/map.i"
-	@echo "... Core/Src/map.s"
 	@echo "... Core/Src/motion.obj"
 	@echo "... Core/Src/motion.i"
 	@echo "... Core/Src/motion.s"
+	@echo "... Core/Src/robot.obj"
+	@echo "... Core/Src/robot.i"
+	@echo "... Core/Src/robot.s"
 	@echo "... Core/Src/stm32f1xx_hal_msp.obj"
 	@echo "... Core/Src/stm32f1xx_hal_msp.i"
 	@echo "... Core/Src/stm32f1xx_hal_msp.s"
