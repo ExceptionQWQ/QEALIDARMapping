@@ -19,8 +19,8 @@ void Handle_Robot_Message(char* message, int len)
         sscanf(message, format, &roll, &pitch, &heading);
         robotInfo.roll = roll;
         robotInfo.pitch = pitch;
-        // robotInfo.heading = heading;
-        robotInfo.heading = 0;
+        robotInfo.heading = heading;
+        // robotInfo.heading = 0;
     }
 }
 

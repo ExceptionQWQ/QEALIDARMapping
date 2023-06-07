@@ -15,7 +15,8 @@
 
 #define ROBOT_DEV_PATH "/dev/ttyACM0"
 #define ROBOT_BAUD 115200
-#define ROBOT_DIS 0.027
+// #define ROBOT_DIS 0.027
+#define ROBOT_DIS 0
 
 struct RobotInfo
 {
